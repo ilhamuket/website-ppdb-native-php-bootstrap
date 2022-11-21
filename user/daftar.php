@@ -1,32 +1,31 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-<?php 
-    include '../dbconnect.php';
-    include '../cek.php';
-    if($role!=='User'){
-        header("location:../login.php");
-    };
-    $userid = $_SESSION['userid'];
+<?php
+include '../dbconnect.php';
+include '../cek.php';
+if ($role !== 'User') {
+    header("location:../login.php");
+};
+$userid = $_SESSION['userid'];
 
-    include 'submit.php';
+include 'submit.php';
 
-    //cek dulu sudah pernah submit belum
-    $cekdulu = mysqli_query($conn,"select * from userdata where userid='$userid'");
-    $lihathasil = mysqli_num_rows($cekdulu);
-    
-    //kalau udah pernah submit
-    if($lihathasil>0){
-        header("location:mydata.php");
-    } else {
+//cek dulu sudah pernah submit belum
+$cekdulu = mysqli_query($conn, "select * from userdata where userid='$userid'");
+$lihathasil = mysqli_num_rows($cekdulu);
 
-    };
-	?>
+//kalau udah pernah submit
+if ($lihathasil > 0) {
+    header("location:mydata.php");
+} else {
+};
+?>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PPDB 2021</title>
+    <title>PPDB 2022</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -36,18 +35,22 @@
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/slicknav.min.css">
     <link rel="stylesheet" href="../assets/select2-4.0.6-rc.1/dist/css/select2.min.css">
-    
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144808195-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
 
-	  gtag('config', 'UA-144808195-1');
-	</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144808195-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-144808195-1');
+    </script>
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css"
+        media="all" />
     <!-- others css -->
     <link rel="stylesheet" href="../assets/css/typography.css">
     <link rel="stylesheet" href="../assets/css/default-css.css">
@@ -68,13 +71,13 @@
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
-                    <a href="index.php"><img src="../assets/logo.png" alt="logo" width="100%"></a>
+                <a href="index.php"><img src="../assets/logo.png" alt="logo" width="100%"></a>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-							<li><a href="index.php"><span>Dashboard</span></a></li>
+                            <li><a href="index.php"><span>Dashboard</span></a></li>
                             <li class="active">
                                 <a href="daftar.php"><i class="ti-layout"></i><span>Pendaftaran</span></a>
                             </li>
@@ -83,9 +86,9 @@
                             </li>
                             <li>
                                 <a href="../logout.php"><span>Logout</span></a>
-                                
+
                             </li>
-                            
+
                         </ul>
                     </nav>
                 </div>
@@ -108,29 +111,36 @@
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
                         <ul class="notification-area pull-right">
-                            <li><h3><div class="date">
-								<script type='text/javascript'>
-						<!--
-						var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-						var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-						var date = new Date();
-						var day = date.getDate();
-						var month = date.getMonth();
-						var thisDay = date.getDay(),
-							thisDay = myDays[thisDay];
-						var yy = date.getYear();
-						var year = (yy < 1000) ? yy + 1900 : yy;
-						document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);		
-						//-->
-						</script></b></div></h3>
+                            <li>
+                                <h3>
+                                    <div class="date">
+                                        <script type='text/javascript'>
+                                        <!--
+                                        var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli',
+                                            'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                                        ];
+                                        var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                        var date = new Date();
+                                        var day = date.getDate();
+                                        var month = date.getMonth();
+                                        var thisDay = date.getDay(),
+                                            thisDay = myDays[thisDay];
+                                        var yy = date.getYear();
+                                        var year = (yy < 1000) ? yy + 1900 : yy;
+                                        document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+                                        //
+                                        -->
+                                        </script></b>
+                                    </div>
+                                </h3>
 
-						</li>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- header area end -->
-			
+
             <!-- page title area end -->
             <div class="main-content-inner">
 
@@ -140,19 +150,24 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
-									<h2>Pendaftaran</h2>
+                                    <h2>Pendaftaran</h2>
                                 </div>
                                 <div class="market-status-table mt-4">
                                     <div class="table-responsive">
-                                    Selamat datang di sistem informasi Penerimaan Peserta Didik Baru (PPDB) SMK IT NUSAINDAH.
-                                         <br>
-                                         <br><br>
-                                         Panduan Pendaftaran:
-                                         <br>1. Isi seluruh formulir yang ditampilkan kemudian periksa kembali, pastikan tidak ada data yang salah.
-                                         <br>2. Klik submit, kemudian klik Confirm. Setelah di-confirm, data tidak dapat diubah kembali.
-                                         <br>3. Jika sudah, bukti pendaftaran akan ditampilkan dan dapat diunduh menjadi PDF
-                                         <br>
-                                         <br>*Note: Pihak sekolah baru akan menerima data Anda setelah Anda klik 'Confirm'
+                                        Selamat datang di sistem informasi Penerimaan Peserta Didik Baru (PPDB) SMK IT
+                                        NUSAINDAH.
+                                        <br>
+                                        <br><br>
+                                        Panduan Pendaftaran:
+                                        <br>1. Isi seluruh formulir yang ditampilkan kemudian periksa kembali, pastikan
+                                        tidak ada data yang salah.
+                                        <br>2. Klik submit, kemudian klik Confirm. Setelah di-confirm, data tidak dapat
+                                        diubah kembali.
+                                        <br>3. Jika sudah, bukti pendaftaran akan ditampilkan dan dapat diunduh menjadi
+                                        PDF
+                                        <br>
+                                        <br>*Note: Pihak sekolah baru akan menerima data Anda setelah Anda klik
+                                        'Confirm'
                                     </div>
                                 </div>
                             </div>
@@ -161,357 +176,165 @@
                 </div>
 
 
-<!------------------ Pisahin ------------------->
+                <!------------------ Pisahin ------------------->
 
 
                 <form method="post" enctype="multipart/form-data">
-                <!-- formulir -->
-                <div class="row mt-5 mb-5">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-									<h2>Data Pribadi</h2>
-                                    <p>* Data yang telah diinput tidak dapat diubah kembali, harap isi dengan teliti dan benar</p>
-                                </div>
-                                <div class="market-status-table mt-4">
-                                    <div class="table-responsive" style="overflow-x:hidden;">
-                                        
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>NISN*</label>
-                                                <input name="nisn" type="text" class="form-control" placeholder="NISN" maxlength="12" required>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>NIK*</label>
-                                                <input name="nik" type="text" class="form-control" placeholder="NIK" maxlength="16" required>
-                                            </div>
-                                            </div>
-                                        </div>
+                    <!-- formulir -->
+                    <div class="row mt-5 mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                        <h2>Data Pribadi</h2>
+                                        <p>* Data yang telah diinput tidak dapat diubah kembali, harap isi dengan teliti
+                                            dan benar</p>
+                                    </div>
+                                    <div class="market-status-table mt-4">
+                                        <div class="table-responsive" style="overflow-x:hidden;">
 
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Nama Lengkap*</label>
-                                                <input name="namalengkap" type="text" class="form-control" placeholder="Nama Lengkap" maxlength="50" required>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>NISN*</label>
+                                                        <input name="nisn" type="text" class="form-control"
+                                                            placeholder="NISN" maxlength="12" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>NIK*</label>
+                                                        <input name="nik" type="text" class="form-control"
+                                                            placeholder="NIK" maxlength="16" required>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Jenis Kelamin*</label>
-                                                <select class="form-control" name="jeniskelamin">
-                                                <option value="L">Laki-laki</option>
-                                                <option value="P">Perempuan</option>
-                                            </select>
-                                            </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Tempat Lahir*</label>
-                                                <input name="tempatlahir" type="text" class="form-control" placeholder="Tempat Lahir" maxlength="20">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Nama Lengkap*</label>
+                                                        <input name="namalengkap" type="text" class="form-control"
+                                                            placeholder="Nama Lengkap" maxlength="50" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Jenis Kelamin*</label>
+                                                        <select class="form-control" name="jeniskelamin">
+                                                            <option value="L">Laki-laki</option>
+                                                            <option value="P">Perempuan</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Tempat Lahir*</label>
+                                                        <input name="tempatlahir" type="text" class="form-control"
+                                                            placeholder="Tempat Lahir" maxlength="20">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Tanggal Lahir*</label>
+                                                        <input name="tgllahir" type="date" class="form-control">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Tanggal Lahir*</label>
-                                                <input name="tgllahir" type="date" class="form-control">
-                                            </div>
-                                            </div>
-                                        </div>
                                             <div class="form-group">
                                                 <label>Alamat Lengkap</label>
-                                                <input name="alamat" type="text" class="form-control" placeholder="Alamat" required>
+                                                <input name="alamat" type="text" class="form-control"
+                                                    placeholder="Alamat" required>
                                             </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                            <label>Provinsi*:</label>
-                                            <div class="col-sm-9">
-                                            <?php                    
-                                                $sql_provinsi = mysqli_query($conn,"SELECT * FROM provinces ORDER BY name ASC");
-                                            ?>
-                                            <select class="form-control" name="provinsi" id="provinsi">
-                                                <option></option>
-                                                <?php                       
-                                                    while($rs_provinsi = mysqli_fetch_assoc($sql_provinsi)){ 
-                                                    echo '<option value="'.$rs_provinsi['id'].'">'.$rs_provinsi['name'].'</option>';
-                                                    }                        
-                                                ?>
-                                            </select>
-                                            <img src="asset/img/loading.gif" width="35" id="load1" style="display:none;" />
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Provinsi*:</label>
+                                                        <div class="col-sm-9">
+                                                            <?php
+                                                            $sql_provinsi = mysqli_query($conn, "SELECT * FROM provinces ORDER BY name ASC");
+                                                            ?>
+                                                            <select class="form-control" name="provinsi" id="provinsi">
+                                                                <option></option>
+                                                                <?php
+                                                                while ($rs_provinsi = mysqli_fetch_assoc($sql_provinsi)) {
+                                                                    echo '<option value="' . $rs_provinsi['id'] . '">' . $rs_provinsi['name'] . '</option>';
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                            <img src="asset/img/loading.gif" width="35" id="load1"
+                                                                style="display:none;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Kota/Kabupaten*:</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" name="kota" id="kota">
+                                                                <option></option>
+                                                            </select>
+                                                            <img src="asset/img/loading.gif" width="35" id="load2"
+                                                                style="display:none;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        </div>
-                                        <div class="col">
-                                        <div class="form-group">
-                                            <label>Kota/Kabupaten*:</label>
-                                            <div class="col-sm-9">          
-                                            <select class="form-control" name="kota" id="kota">
-                                                <option></option>
-                                            </select>
-                                            <img src="asset/img/loading.gif" width="35" id="load2" style="display:none;" />
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="col">
-                                        <div class="form-group">
-                                            <label>Kecamatan*:</label>
-                                            <div class="col-sm-9">          
-                                            <select class="form-control" name="kecamatan" id="kecamatan">
-                                                <option></option>
-                                            </select>
-                                            <img src="asset/img/loading.gif" width="35" id="load3" style="display:none;" />
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Kecamatan*:</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" name="kecamatan"
+                                                                id="kecamatan">
+                                                                <option></option>
+                                                            </select>
+                                                            <img src="asset/img/loading.gif" width="35" id="load3"
+                                                                style="display:none;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Kelurahan*:</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" name="kelurahan"
+                                                                id="kelurahan">
+                                                                <option></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        </div>
-                                        <div class="col">
-                                        <div class="form-group">
-                                            <label>Kelurahan*:</label>
-                                            <div class="col-sm-9">          
-                                            <select class="form-control" name="kelurahan" id="kelurahan">
-                                                <option></option>
-                                            </select>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Agama*</label>
+                                                        <select class="form-control" name="agama">
+                                                            <option value="Islam">Islam</option>
+                                                            <option value="Kristen">Kristen</option>
+                                                            <option value="Katolik">Katolik</option>
+                                                            <option value="Buddha">Buddha</option>
+                                                            <option value="Hindu">Hindu</option>
+                                                            <option value="Konghucu">Konghucu</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>No Telepon</label>
+                                                        <input name="telepon" type="text" class="form-control"
+                                                            maxlength="15" required>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Agama*</label>
-                                                <select class="form-control" name="agama">
-                                                <option value="Islam">Islam</option>
-                                                <option value="Kristen">Kristen</option>
-                                                <option value="Katolik">Katolik</option>
-                                                <option value="Buddha">Buddha</option>
-                                                <option value="Hindu">Hindu</option>
-                                                <option value="Konghucu">Konghucu</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>No Telepon</label>
-                                                <input name="telepon" type="text" class="form-control" maxlength="15" required>
-                                            </div>
-                                            </div>
-                                        </div>
-                                            
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
 
-                    <div class="row mt-5 mb-5">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-									<h2>Data Orang Tua</h2>
-                                </div>
-                                <div class="market-status-table mt-4">
-                                    <div class="table-responsive" style="overflow-x:hidden;">
-                                        
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>NIK Ayah*</label>
-                                                <input name="ayahnik" type="text" class="form-control" placeholder="NIK Ayah" maxlength="16">
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Nama Ayah*</label>
-                                                <input name="ayahnama" type="text" class="form-control" placeholder="Nama Ayah" maxlength="40">
-                                            </div>
-                                            </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Pendidikan Ayah</label>
-                                                <select class="form-control" name="ayahpendidikan">
-                                                    <option value="SD">SD</option>
-                                                    <option value="SMP">SMP</option>
-                                                    <option value="SMA">SMA/SMK/Sederajat</option>
-                                                    <option value="S1">S1/Sederajat</option>
-                                                    <option value="S2">S2</option>
-                                                    <option value="S3">S3</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Pekerjaan Ayah</label>
-                                                <select class="form-control" name="ayahpekerjaan">
-                                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
-                                                    <option value="PNS">PNS</option>
-                                                    <option value="Wiraswasta">Wiraswasta</option>
-                                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
-                                                    <option value="PHL">Pekerja Harian Lepas</option>
-                                                    <option value="TNI/Polri">TNI/Polri</option>
-                                                    <option value="Buruh">Buruh</option>
-                                                    <option value="Pensiun">Pensiun</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Penghasilan Ayah per bulan</label>
-                                                <select class="form-control" name="ayahpenghasilan">
-                                                    <option value="<500.000">< Rp500.000</option>
-                                                    <option value="500.000-1.000.000">Rp500.000-Rp1.500.000</option>
-                                                    <option value="1.500.000-3.500.000">Rp1.500.000-Rp3.500.000</option>
-                                                    <option value="3.000.000-5.000.000">Rp3.500.000-Rp5.000.000</option>
-                                                    <option value="5.000.000-10.000.000">Rp5.000.000-Rp10.000.000</option>
-                                                    <option value="10.000.000-20.000.000">Rp10.000.000-20.000.000</option>
-                                                    <option value=">20.000.000">> Rp20.000.000</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>No Telepon Ayah</label>
-                                                <input name="ayahtelepon" type="text" class="form-control" maxlength="15">
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <hr>
-                                        <br>
-
-
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>NIK Ibu*</label>
-                                                <input name="ibunik" type="text" class="form-control" placeholder="NIK Ibu" maxlength="16">
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Nama Ibu*</label>
-                                                <input name="ibunama" type="text" class="form-control" placeholder="Nama Ibu" maxlength="40">
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Pendidikan Ibu</label>
-                                                <select class="form-control" name="ibupendidikan">
-                                                    <option value="SD">SD</option>
-                                                    <option value="SMP">SMP</option>
-                                                    <option value="SMA">SMA/SMK/Sederajat</option>
-                                                    <option value="S1">S1/Sederajat</option>
-                                                    <option value="S2">S2</option>
-                                                    <option value="S3">S3</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Pekerjaan Ibu</label>
-                                                <select class="form-control" name="ibupekerjaan">
-                                                    <option value="Tidak Bekerja">Ibu Rumah Tangga</option>
-                                                    <option value="PNS">PNS</option>
-                                                    <option value="Wiraswasta">Wiraswasta</option>
-                                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
-                                                    <option value="PHL">Pekerja Harian Lepas</option>
-                                                    <option value="TNI/Polri">TNI/Polri</option>
-                                                    <option value="Buruh">Buruh</option>
-                                                    <option value="Pensiun">Pensiun</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Penghasilan Ibu per bulan</label>
-                                                <select class="form-control" name="ibupenghasilan">
-                                                    <option value="<500.000">< Rp500.000</option>
-                                                    <option value="500.000-1.000.000">Rp500.000-Rp1.500.000</option>
-                                                    <option value="1.500.000-3.500.000">Rp1.500.000-Rp3.500.000</option>
-                                                    <option value="3.000.000-5.000.000">Rp3.500.000-Rp5.000.000</option>
-                                                    <option value="5.000.000-10.000.000">Rp5.000.000-Rp10.000.000</option>
-                                                    <option value="10.000.000-20.000.000">Rp10.000.000-20.000.000</option>
-                                                    <option value=">20.000.000">> Rp20.000.000</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>No Telepon Ibu</label>
-                                                <input name="ibutelepon" type="text" class="form-control" maxlength="15">
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <br>
-                                        <hr>
-                                        <br>
-
-
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>NIK Wali</label>
-                                                <input name="walinik" type="text" class="form-control" placeholder="NIK Wali" maxlength="16">
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Nama Wali</label>
-                                                <input name="walinama" type="text" class="form-control" placeholder="Nama Wali" maxlength="40">
-                                            </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Pekerjaan Wali</label>
-                                                <select class="form-control" name="walipekerjaan">
-                                                    <option value="Tidak Bekerja">Tidak Bekerja</option>
-                                                    <option value="PNS">PNS</option>
-                                                    <option value="Wiraswasta">Wiraswasta</option>
-                                                    <option value="Pegawai Swasta">Pegawai Swasta</option>
-                                                    <option value="PHL">Pekerja Harian Lepas</option>
-                                                    <option value="TNI/Polri">TNI/Polri</option>
-                                                    <option value="Buruh">Buruh</option>
-                                                    <option value="Pensiun">Pensiun</option>
-                                                </select>
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>No Telepon Wali</label>
-                                                <input name="walitelepon" type="text" class="form-control" maxlength="15">
-                                                <input type="hidden" value="<?=$userid;?>" name="id">
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -520,71 +343,303 @@
 
 
                     <div class="row mt-5 mb-5">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-									<h2>Data Sekolah Asal & Berkas</h2>
-                                    <p>Data yang telah diinput tidak dapat diubah kembali</p>
-                                </div>
-                                <div class="market-status-table mt-4">
-                                    <div class="table-responsive" style="overflow-x:hidden;">
-                                        
-                                        <div class="row">
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>NPSN Sekolah Asal</label>
-                                                <input name="sekolahnpsn" type="text" class="form-control" placeholder="NPSN Sekolah Asal" maxlength="12">
-                                            </div>
-                                            </div>
-                                            <div class="col">
-                                            <div class="form-group">
-                                                <label>Nama Sekolah Asal</label>
-                                                <input name="sekolahnama" type="text" class="form-control" placeholder="Nama Sekolah Asal" maxlength="40">
-                                            </div>
-                                            </div>
-                                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                        <h2>Data Orang Tua</h2>
+                                    </div>
+                                    <div class="market-status-table mt-4">
+                                        <div class="table-responsive" style="overflow-x:hidden;">
 
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                        <label for="foto" class=" form-control-label">Pas Foto 4x6 (JPG/PNG), maks 500kb</label>
-                                                        <input type="file" id="foto" name="foto" class="form-control-file">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>NIK Ayah*</label>
+                                                        <input name="ayahnik" type="text" class="form-control"
+                                                            placeholder="NIK Ayah" maxlength="16">
                                                     </div>
                                                 </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                        <label for="scanijazahdepan" class=" form-control-label">Scan Ijazah Bagian Depan (JPG/PNG), maks 500kb</label>
-                                                        <input type="file" id="scanijazahdepan" name="scanijazahdepan" class="form-control-file">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Nama Ayah*</label>
+                                                        <input name="ayahnama" type="text" class="form-control"
+                                                            placeholder="Nama Ayah" maxlength="40">
                                                     </div>
                                                 </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                        <label for="scanijazahbelakang" class=" form-control-label">Scan Ijazah Bagian Belakang (JPG/PNG), maks 500kb</label>
-                                                        <input type="file" id="scanijazahbelakang" name="scanijazahbelakang" class="form-control-file">
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Pendidikan Ayah</label>
+                                                        <select class="form-control" name="ayahpendidikan">
+                                                            <option value="SD">SD</option>
+                                                            <option value="SMP">SMP</option>
+                                                            <option value="SMA">SMA/SMK/Sederajat</option>
+                                                            <option value="S1">S1/Sederajat</option>
+                                                            <option value="S2">S2</option>
+                                                            <option value="S3">S3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Pekerjaan Ayah</label>
+                                                        <select class="form-control" name="ayahpekerjaan">
+                                                            <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                                            <option value="PNS">PNS</option>
+                                                            <option value="Wiraswasta">Wiraswasta</option>
+                                                            <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                                            <option value="PHL">Pekerja Harian Lepas</option>
+                                                            <option value="TNI/Polri">TNI/Polri</option>
+                                                            <option value="Buruh">Buruh</option>
+                                                            <option value="Pensiun">Pensiun</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Penghasilan Ayah per bulan</label>
+                                                        <select class="form-control" name="ayahpenghasilan">
+                                                            <option value="<500.000">
+                                                                < Rp500.000</option>
+                                                            <option value="500.000-1.000.000">Rp500.000-Rp1.500.000
+                                                            </option>
+                                                            <option value="1.500.000-3.500.000">Rp1.500.000-Rp3.500.000
+                                                            </option>
+                                                            <option value="3.000.000-5.000.000">Rp3.500.000-Rp5.000.000
+                                                            </option>
+                                                            <option value="5.000.000-10.000.000">
+                                                                Rp5.000.000-Rp10.000.000</option>
+                                                            <option value="10.000.000-20.000.000">
+                                                                Rp10.000.000-20.000.000</option>
+                                                            <option value=">20.000.000">> Rp20.000.000</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>No Telepon Ayah</label>
+                                                        <input name="ayahtelepon" type="text" class="form-control"
+                                                            maxlength="15">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <hr>
+                                            <br>
+
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>NIK Ibu*</label>
+                                                        <input name="ibunik" type="text" class="form-control"
+                                                            placeholder="NIK Ibu" maxlength="16">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Nama Ibu*</label>
+                                                        <input name="ibunama" type="text" class="form-control"
+                                                            placeholder="Nama Ibu" maxlength="40">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Pendidikan Ibu</label>
+                                                        <select class="form-control" name="ibupendidikan">
+                                                            <option value="SD">SD</option>
+                                                            <option value="SMP">SMP</option>
+                                                            <option value="SMA">SMA/SMK/Sederajat</option>
+                                                            <option value="S1">S1/Sederajat</option>
+                                                            <option value="S2">S2</option>
+                                                            <option value="S3">S3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Pekerjaan Ibu</label>
+                                                        <select class="form-control" name="ibupekerjaan">
+                                                            <option value="Tidak Bekerja">Ibu Rumah Tangga</option>
+                                                            <option value="PNS">PNS</option>
+                                                            <option value="Wiraswasta">Wiraswasta</option>
+                                                            <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                                            <option value="PHL">Pekerja Harian Lepas</option>
+                                                            <option value="TNI/Polri">TNI/Polri</option>
+                                                            <option value="Buruh">Buruh</option>
+                                                            <option value="Pensiun">Pensiun</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Penghasilan Ibu per bulan</label>
+                                                        <select class="form-control" name="ibupenghasilan">
+                                                            <option value="<500.000">
+                                                                < Rp500.000</option>
+                                                            <option value="500.000-1.000.000">Rp500.000-Rp1.500.000
+                                                            </option>
+                                                            <option value="1.500.000-3.500.000">Rp1.500.000-Rp3.500.000
+                                                            </option>
+                                                            <option value="3.000.000-5.000.000">Rp3.500.000-Rp5.000.000
+                                                            </option>
+                                                            <option value="5.000.000-10.000.000">
+                                                                Rp5.000.000-Rp10.000.000</option>
+                                                            <option value="10.000.000-20.000.000">
+                                                                Rp10.000.000-20.000.000</option>
+                                                            <option value=">20.000.000">> Rp20.000.000</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>No Telepon Ibu</label>
+                                                        <input name="ibutelepon" type="text" class="form-control"
+                                                            maxlength="15">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <hr>
+                                            <br>
+
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>NIK Wali</label>
+                                                        <input name="walinik" type="text" class="form-control"
+                                                            placeholder="NIK Wali" maxlength="16">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Nama Wali</label>
+                                                        <input name="walinama" type="text" class="form-control"
+                                                            placeholder="Nama Wali" maxlength="40">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Pekerjaan Wali</label>
+                                                        <select class="form-control" name="walipekerjaan">
+                                                            <option value="Tidak Bekerja">Tidak Bekerja</option>
+                                                            <option value="PNS">PNS</option>
+                                                            <option value="Wiraswasta">Wiraswasta</option>
+                                                            <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                                            <option value="PHL">Pekerja Harian Lepas</option>
+                                                            <option value="TNI/Polri">TNI/Polri</option>
+                                                            <option value="Buruh">Buruh</option>
+                                                            <option value="Pensiun">Pensiun</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>No Telepon Wali</label>
+                                                        <input name="walitelepon" type="text" class="form-control"
+                                                            maxlength="15">
+                                                        <input type="hidden" value="<?= $userid; ?>" name="id">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                            
-
-                                        <div class="modal-footer">
-                                            <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
-                                        </div>
-                                    
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-            </form>
 
 
+                    <div class="row mt-5 mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                        <h2>Data Sekolah Asal & Berkas</h2>
+                                        <p>Data yang telah diinput tidak dapat diubah kembali</p>
+                                    </div>
+                                    <div class="market-status-table mt-4">
+                                        <div class="table-responsive" style="overflow-x:hidden;">
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>NPSN Sekolah Asal</label>
+                                                        <input name="sekolahnpsn" type="text" class="form-control"
+                                                            placeholder="NPSN Sekolah Asal" maxlength="12">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Nama Sekolah Asal</label>
+                                                        <input name="sekolahnama" type="text" class="form-control"
+                                                            placeholder="Nama Sekolah Asal" maxlength="40">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="foto" class=" form-control-label">Pas Foto 4x6
+                                                            (JPG/PNG), maks 500kb</label>
+                                                        <input type="file" id="foto" name="foto"
+                                                            class="form-control-file">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="scanijazahdepan" class=" form-control-label">Scan
+                                                            Ijazah Bagian Depan (JPG/PNG), maks 500kb</label>
+                                                        <input type="file" id="scanijazahdepan" name="scanijazahdepan"
+                                                            class="form-control-file">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="scanijazahbelakang" class=" form-control-label">Scan
+                                                            Ijazah Bagian Belakang (JPG/PNG), maks 500kb</label>
+                                                        <input type="file" id="scanijazahbelakang"
+                                                            name="scanijazahbelakang" class="form-control-file">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="modal-footer">
+                                                <input type="submit" name="submit" class="btn btn-primary"
+                                                    value="Simpan">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
 
 
 
@@ -592,20 +647,22 @@
 
 
 
-                </div>
-              
-                
-                <!-- row area start-->
+
+
             </div>
+
+
+            <!-- row area start-->
         </div>
-        <!-- main content area end -->
-        <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>PPDB Online 2021</p>
-            </div>
-        </footer>
-        <!-- footer area end-->
+    </div>
+    <!-- main content area end -->
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>PPDB Online 2022</p>
+        </div>
+    </footer>
+    <!-- footer area end-->
     </div>
     <!-- page container area end -->
 
@@ -636,8 +693,8 @@
     <!-- others plugins -->
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/select2-4.0.6-rc.1/dist/js/select2.min.js"></script>   
-    <script src="../assets/select2-4.0.6-rc.1/dist/js/i18n/id.js"></script>   
+    <script src="../assets/select2-4.0.6-rc.1/dist/js/select2.min.js"></script>
+    <script src="../assets/select2-4.0.6-rc.1/dist/js/i18n/id.js"></script>
     <script src="../assets/js/app.js"></script>
 </body>
 

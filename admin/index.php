@@ -1,18 +1,18 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-<?php 
-    include '../dbconnect.php';
-    include '../cek.php';
-    if($role!=='Admin'){
-        header("location:../login.php");
-    }
-	?>
+<?php
+include '../dbconnect.php';
+include '../cek.php';
+if ($role !== 'Admin') {
+    header("location:../login.php");
+}
+?>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PPDB 2021 ADMIN</title>
+    <title>PPDB 2022 ADMIN</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="../assets/icon.png">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -21,15 +21,18 @@
     <link rel="stylesheet" href="../assets/css/metisMenu.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/slicknav.min.css">
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144808195-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144808195-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'UA-144808195-1');
-	</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-144808195-1');
+    </script>
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- others css -->
@@ -52,13 +55,13 @@
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
-                    <a href="index.php"><img src="../assets/logo.png" alt="logo" width="100%"></a>
+                <a href="index.php"><img src="../assets/logo.png" alt="logo" width="100%"></a>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-							<li class="active"><a href="index.php"><span>Dashboard</span></a></li>
+                            <li class="active"><a href="index.php"><span>Dashboard</span></a></li>
                             <li>
                                 <a href="form.php"><i class="ti-layout"></i><span>Formulir</span></a>
                             </li>
@@ -73,9 +76,9 @@
                             </li>
                             <li>
                                 <a href="../logout.php"><span>Logout</span></a>
-                                
+
                             </li>
-                            
+
                         </ul>
                     </nav>
                 </div>
@@ -98,29 +101,34 @@
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
                         <ul class="notification-area pull-right">
-                            <li><h3><div class="date">
-								<script type='text/javascript'>
-						<!--
-						var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-						var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-						var date = new Date();
-						var day = date.getDate();
-						var month = date.getMonth();
-						var thisDay = date.getDay(),
-							thisDay = myDays[thisDay];
-						var yy = date.getYear();
-						var year = (yy < 1000) ? yy + 1900 : yy;
-						document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);		
-						//-->
-						</script></b></div></h3>
+                            <li>
+                                <h3>
+                                    <div class="date">
+                                        <script type='text/javascript'>
+                                            <!--
+                                            var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                                            var myDays = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                                            var date = new Date();
+                                            var day = date.getDate();
+                                            var month = date.getMonth();
+                                            var thisDay = date.getDay(),
+                                                thisDay = myDays[thisDay];
+                                            var yy = date.getYear();
+                                            var year = (yy < 1000) ? yy + 1900 : yy;
+                                            document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
+                                            //
+                                            -->
+                                        </script></b>
+                                    </div>
+                                </h3>
 
-						</li>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <!-- header area end -->
-			
+
             <!-- page title area end -->
             <div class="main-content-inner">
                 <!-- market value area start -->
@@ -129,20 +137,20 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-sm-flex justify-content-between align-items-center">
-									<h2>Dashboard</h2>
+                                    <h2>Dashboard</h2>
                                 </div>
                                 <div class="market-status-table mt-4">
                                     <div class="table-responsive">
-                                    Selamat datang di sistem informasi Penerimaan Peserta Didik Baru (PPDB) SMK IT NUSAINDAH.
-                                         <br>
+                                        Selamat datang di sistem informasi Penerimaan Peserta Didik Baru (PPDB) SMK IT NUSAINDAH.
+                                        <br>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-              
-                
+
+
                 <!-- row area start-->
             </div>
         </div>
@@ -150,7 +158,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>PPDB Online 2021</p>
+                <p>PPDB Online 2022</p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -174,8 +182,8 @@
     <!-- start zingchart js -->
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <script>
-    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
     </script>
     <!-- all line chart activation -->
     <script src="../assets/js/line-chart.js"></script>
