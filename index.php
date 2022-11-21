@@ -44,7 +44,8 @@
             </div>
             <div class="col-lg-5">
                 <h1 class="font-weight-light">Penerimaan Peserta Didik Baru 2022</h1>
-                <p>Salah satu faktor yang mendorong meningkatnya mutu pendidikan dipengaruhi oleh input pendidikan dalam
+                <p>Salah satu faktor yang mendorong meningkatnya mutu pendidikan dipengaruhi oleh input pendidikan,
+                    dalam
                     hal ini peserta didik. Penyelenggaraan Penerimaaan Peserta Didik Baru (PPDB) merupakan kegiatan
                     integral dalam proses pendidikan disatuan pendidikan.</p>
                 <a class="btn btn-primary" href="register.php">Daftar Sekarang!</a>
@@ -55,7 +56,7 @@
             <div class="card-body">
                 <p class="text-white m-0">Harap diperhatikan sebelum melakukan pendaftaran, harus melakukan registrasi
                     akun terlebih dahulu. <br>Juga jangan lupa menyiapkan foto 4x3, scan ijazah depan &
-                    belakang.Pendaftaran akan dibuka mulai tanggal 2 - 30 Desember 2022 </p>
+                    belakang.Pendaftaran akan dibuka mulai tanggal 15-30 Desember 2022 </p>
             </div>
         </div>
         <!-- Content Row-->
